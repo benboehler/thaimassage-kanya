@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-massage-primary: #8da399; /* Sanftes Salbeigrün */
+  --color-massage-pale: #f1f4f2;    /* Sehr blasses Grün */
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}

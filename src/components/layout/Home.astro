@@ -1,0 +1,34 @@
+---
+import {Image} from 'astro:assets';
+import ueberMichPortrait from '../../assets/beispiel massage seite_portrait.png';
+---
+<section id="home" class="px-4 sm:px-6 lg:px-8 pt-24 pb-24 bg-massage-primary">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-stretch bg-surface rounded-2xl overflow-hidden">
+        <!-- Linke Seite: Großes Bild -->
+        <div class="flex items-center justify-center">
+            <Image
+                    src={ueberMichPortrait}
+                    alt="Professionelle Masseurin in einer Wellness-Umgebung"
+                    class="w-[70%] h-auto object-contain rounded-2xl"
+            />
+        </div>
+
+        <!-- Rechte Seite: Titel und Text -->
+        <div class="p-8 md:p-12 lg:p-16 flex flex-col justify-center text-center md:text-left items-center md:items-start">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+                Willkommen bei CreaMassage
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                Entspannen, regenerieren und neue Energie tanken – bei CreaMassage verbinden wir professionelle
+                Massagekunst mit einem ganzheitlichen Ansatz für Körper und Wohlbefinden. Unsere Behandlungen helfen
+                Ihnen dabei, Verspannungen zu lösen, Stress abzubauen und wieder in Ihre Balance zu finden.
+            </p>
+            <div class="mt-8">
+                <a href="/#angebot"
+                   class="py-3 px-8 inline-flex items-center gap-x-2 text-base font-medium rounded-2xl bg-massage-primary text-white border-2 border-white hover:opacity-90 transition-all shadow-md focus:outline-hidden">
+                    Unser Angebot entdecken
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

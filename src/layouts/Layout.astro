@@ -1,0 +1,95 @@
+---
+import Header from "../components/layout/Header.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/creaocchio_c.svg"/>
+    <link rel="icon" href="/creaocchio_c.ico"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>Beispiel-Webseiten CreaOcchio</title>
+</head>
+<body>
+<Header/>
+<main>
+    <slot/>
+</main>
+
+<script>
+    import {gsap} from "gsap";
+    import {ScrollToPlugin} from "gsap/ScrollToPlugin";
+
+    gsap.registerPlugin(ScrollToPlugin);
+
+    // Preline setup
+    import('preline').then(({ HSStaticMethods }) => {
+        // @ts-ignore
+        HSStaticMethods.autoInit();
+    });
+
+    // Re-init Preline on Astro page loads
+    document.addEventListener('astro:after-swap', () => {
+        // @ts-ignore
+        import('preline').then(({ HSStaticMethods }) => {
+            HSStaticMethods.autoInit();
+        });
+        setupNavLinks();
+    });
+
+    // Close mobile menu on link click
+    function setupNavLinks() {
+        document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                let targetId = anchor.getAttribute('href');
+                if (!targetId || targetId === '#' || targetId === '/#') return;
+
+                // Close mobile menu if it's open
+                const collapse = document.querySelector('#hs-pro-pnm');
+                if (collapse && !collapse.classList.contains('hidden')) {
+                    // @ts-ignore
+                    import('preline').then(({ HSCollapse }) => HSCollapse.hide(collapse));
+                }
+
+                // Handle absolute-style anchors (/#id)
+                if (targetId.startsWith('/#')) {
+                    targetId = targetId.substring(1);
+                }
+
+                try {
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+                        gsap.to(window, {
+                            duration: 1,
+                            scrollTo: {
+                                y: targetElement,
+                                offsetY: 80
+                            },
+                            ease: "power2.inOut"
+                        });
+                    }
+                } catch (error) {
+                    console.error('Invalid selector:', targetId);
+                }
+            });
+        });
+    }
+
+    setupNavLinks();
+</script>
+</body>
+</html>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
