@@ -2,6 +2,6 @@ option batch on
 option confirm off
 open sftp://creaocch@sl272.web.hostpoint.ch/ -hostkey="ssh-ed25519 255 hHhoEyBT95m3Zfb147F76BltiqqEqa7yjdx4zwVAsrk" -privatekey="%USERPROFILE%\.ssh\id_ed25519"
 lcd "dist"
-cd /home/creaocch/www/beispiel-webseiten.creaocchio.ch
+cd /home/creaocch/www/thaimassage-kanya.ch
 put -nopreservetime -nopermissions *
 exit
