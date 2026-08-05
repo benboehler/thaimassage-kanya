@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-massage-primary: #8da399; /* Sanftes Salbeigrün */
-  --color-massage-pale: #f1f4f2;    /* Sehr blasses Grün */
+  --color-massage-primary: #C27AD6; /* Lila */
+  --color-massage-pale: #F9F2FB;    /* Sehr blasses Lila */
 }
 
 html,
